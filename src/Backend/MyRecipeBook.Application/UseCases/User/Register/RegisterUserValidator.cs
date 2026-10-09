@@ -10,7 +10,10 @@ internal class RegisterUserValidator : AbstractValidator<RequestRegisterUserJson
     {
         RuleFor(user => user.Name).NotEmpty().WithMessage(ResourceMessagensException.NAME_EMPTY);
         RuleFor(user => user.Email).NotEmpty().WithMessage(ResourceMessagensException.EMAIL_EMPTY);
-        RuleFor(user => user.Email).EmailAddress().WithMessage(ResourceMessagensException.EMAIL_INVALID);
+        When(user => string.IsNullOrWhiteSpace(user.Email) == false, () => 
+        {
+            RuleFor(user => user.Email).EmailAddress().WithMessage(ResourceMessagensException.EMAIL_INVALID);
+        });
         RuleFor(user => user.Password.Length).GreaterThanOrEqualTo(6).WithMessage(ResourceMessagensException.PASSWORD_MIN_CARAC);
     }
 }

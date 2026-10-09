@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Mvc.Filters;
 using MyRecipeBook.Communication.Response;
 using MyRecipeBook.Exceptions;
 using MyRecipeBook.Exceptions.ExceptionsBase;
-using System;
 using System.Net;
 
 namespace MyRecipeBook.API.Filters
@@ -28,7 +27,7 @@ namespace MyRecipeBook.API.Filters
                 var exception = context.Exception as ErrorOnValidationExceptios;
 
                 context.HttpContext.Response.StatusCode = (int)HttpStatusCode.BadRequest;
-                context.Result = new BadRequestObjectResult(new ResponseErrorJson(exception.ErrorMenssages));
+                context.Result = new BadRequestObjectResult(new ResponseErrorJson(exception.GetErrorMensagens()));
             }
 
         }

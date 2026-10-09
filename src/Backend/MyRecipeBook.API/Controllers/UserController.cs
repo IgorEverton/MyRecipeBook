@@ -1,8 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using MyRecipeBook.Application.UseCases.User.Register;
 using MyRecipeBook.Communication.Request;
 using MyRecipeBook.Communication.Response;
-using MyRecipeBook.Application.UseCases.User.Register;
 
 namespace MyRecipeBook.API.Controllers
 {

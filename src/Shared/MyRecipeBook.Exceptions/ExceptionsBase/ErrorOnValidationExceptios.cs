@@ -2,10 +2,13 @@
 
 public class ErrorOnValidationExceptios : MyRecipebookExceptions
 {
+    private readonly List<string> _errors;
     public IList<string> ErrorMenssages { get; set; }
 
-    public ErrorOnValidationExceptios(IList<string> errorMensasges) 
+    public ErrorOnValidationExceptios(List<string> errorMensasges) 
     {
-        ErrorMenssages = errorMensasges;
+        _errors = errorMensasges;
     }
+
+    public List<string> GetErrorMensagens() => _errors;
 }

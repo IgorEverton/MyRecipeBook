@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using MyRecipeBook.Application.Service.AutoMapper;
+using Mapster;
 using MyRecipeBook.Application.Service.Cryptography;
 using MyRecipeBook.Communication.Request;
 using MyRecipeBook.Communication.Response;
@@ -13,30 +13,27 @@ public class RegisterUserUseCase : IRegisterUserUseCase
 {
     private readonly IUserReadOnlyRepository _readOnlyRepository;
     private readonly IUserWriteOnlyRepository _writeOnlyRepository;
-    private readonly IMapper _mapper;
     private readonly PasswordEncripter _passwordEncripter;
     private readonly IUnitOfWork _unitOfWork;
 
     public RegisterUserUseCase(
         IUserReadOnlyRepository readOnlyRepository, 
         IUserWriteOnlyRepository writeOnlyRepository, 
-        IMapper mapper, 
         PasswordEncripter passwordEncripter,
         IUnitOfWork unitOfWork
         )
     {
         _readOnlyRepository = readOnlyRepository;
         _writeOnlyRepository = writeOnlyRepository;
-        _mapper = mapper;
         _passwordEncripter = passwordEncripter;
         _unitOfWork = unitOfWork;
     }
     public async Task<ResponseRegisterUserJson> Exercute(RequestRegisterUserJson request)
     {
 
-        Validate(request);
+        ValidateAndThrowOnFailures(request);
 
-        var user = _mapper.Map<Domain.Entities.User>(request);
+        var user = request.Adapt<Domain.Entities.User>();
 
         user.Password = _passwordEncripter.Encrypt(request.Password);
 
@@ -49,7 +46,7 @@ public class RegisterUserUseCase : IRegisterUserUseCase
             Name = request.Name
         };
     }
-    private void Validate(RequestRegisterUserJson request)
+    private void ValidateAndThrowOnFailures(RequestRegisterUserJson request)
     {
         var validator = new RegisterUserValidator();
 

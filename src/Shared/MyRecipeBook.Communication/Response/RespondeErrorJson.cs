@@ -2,16 +2,10 @@
 
 public class ResponseErrorJson
 {
-    public IList<string> Errors { get; set; }
+    public IList<string> Errors { get; private set; }
 
-    public ResponseErrorJson(IList<string> errors) => Errors = errors;
+    public ResponseErrorJson(IList<string> errorMessage) => Errors = errorMessage;
 
-    public ResponseErrorJson(string error)
-    {
-        Errors = new List<string>
-        {
-            error
-        };
-    }
+    public ResponseErrorJson(string errorMessage) => Errors = [errorMessage];
 
 }
