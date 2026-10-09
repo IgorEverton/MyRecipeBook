@@ -17,6 +17,32 @@ internal sealed class Argon2PasswordHasher : IPasswordHasher
     {
         var salt = RandomNumberGenerator.GetBytes(SALT_SIZE);
 
+        var hash = HashPassword(password, salt);
+
+        var combinedBytes = new byte[hash.Length + salt.Length];
+
+        salt.CopyTo(combinedBytes, 0);
+        hash.CopyTo(combinedBytes, index: salt.Length);
+
+        return Convert.ToBase64String(combinedBytes);
+    }
+
+    public bool VerifyPassword(string password, string passwordHadh)
+    {
+        var combinedBytes = Convert.FromBase64String(passwordHadh);
+
+        var salt = new byte[SALT_SIZE];
+        var hash = new byte[HASH_SIZE];
+
+        Array.Copy(combinedBytes, salt, SALT_SIZE);
+        Array.Copy(combinedBytes, SALT_SIZE, hash, 0, HASH_SIZE);
+
+        var newHash = HashPassword(password, salt);
+
+        return CryptographicOperations.FixedTimeEquals(hash, newHash);
+    }
+    private byte[] HashPassword(string password, byte[] salt)
+    {
         var hashAlgorithm = new Argon2id(Encoding.UTF8.GetBytes(password))
         {
             DegreeOfParallelism = DEGREE_OF_PARALLELISM,
@@ -24,18 +50,7 @@ internal sealed class Argon2PasswordHasher : IPasswordHasher
             MemorySize = MemorySize,
             Salt = salt
         };
-        var hash = hashAlgorithm.GetBytes(HASH_SIZE);
-
-        var combinedBytes = new byte[SALT_SIZE + HASH_SIZE];
-
-        salt.CopyTo(combinedBytes, 0);
-        hash.CopyTo(combinedBytes, SALT_SIZE);
-
-        return Convert.ToBase64String(combinedBytes);
+        return hashAlgorithm.GetBytes(HASH_SIZE);
     }
 
-    public bool VerifyPassword(string password, string hashedPassword)
-    {
-        throw new NotImplementedException();
-    }
 }
