@@ -1,15 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MyRecipeBook.Domain.Entities;
 using MyRecipeBook.Domain.Repositories.User;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MyRecipeBook.Infrastructure.DataAccess.Repositories;
 
-public class UserRepository: IUserWriteOnlyRepository, IUserReadOnlyRepository
+internal sealed class UserRepository: IUserWriteOnlyRepository, IUserReadOnlyRepository
 {
     private readonly MyRecipeBookDbContext _dbContext;
 

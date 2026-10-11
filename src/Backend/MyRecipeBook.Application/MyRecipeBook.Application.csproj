@@ -7,14 +7,20 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AutoMapper" Version="13.0.1" />
     <PackageReference Include="FluentValidation" Version="12.1.1" />
+    <PackageReference Include="Mapster" Version="10.0.13" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="10.0.12" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\Shared\MyRecipeBook.Communication\MyRecipeBook.Communication.csproj" />
     <ProjectReference Include="..\..\Shared\MyRecipeBook.Exceptions\MyRecipeBook.Exceptions.csproj" />
     <ProjectReference Include="..\MyRecipeBook.Domain\MyRecipeBook.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Service\" />
   </ItemGroup>
 
 </Project>

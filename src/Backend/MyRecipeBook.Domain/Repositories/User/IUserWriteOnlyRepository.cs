@@ -2,6 +2,6 @@
 {
     public interface IUserWriteOnlyRepository
     {
-        public Task AddUser(Entities.User user);
+       Task AddUser(Entities.User user);
     }
 }

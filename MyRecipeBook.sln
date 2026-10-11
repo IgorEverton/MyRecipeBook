@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.10.35013.160
+# Visual Studio Version 18
+VisualStudioVersion = 18.10.12224.181 stable
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{EC7BF7B9-66BA-42E6-A706-4776B7CA9BD2}"
 EndProject
@@ -22,6 +22,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyRecipeBook.Communication", "src\Shared\MyRecipeBook.Communication\MyRecipeBook.Communication.csproj", "{2826AA27-7FC1-4F37-BDDF-D0F1C184B291}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyRecipeBook.Exceptions", "src\Shared\MyRecipeBook.Exceptions\MyRecipeBook.Exceptions.csproj", "{A0C4C405-98C2-4BA2-ACF1-BA60027CE714}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Validator.Tests", "Validator.Tests\Validator.Tests.csproj", "{A71F57A1-7D23-4CF7-9D45-57C956B475FF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,6 +55,10 @@ Global
 		{A0C4C405-98C2-4BA2-ACF1-BA60027CE714}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A0C4C405-98C2-4BA2-ACF1-BA60027CE714}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A0C4C405-98C2-4BA2-ACF1-BA60027CE714}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A71F57A1-7D23-4CF7-9D45-57C956B475FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A71F57A1-7D23-4CF7-9D45-57C956B475FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A71F57A1-7D23-4CF7-9D45-57C956B475FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A71F57A1-7D23-4CF7-9D45-57C956B475FF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -66,6 +72,7 @@ Global
 		{27D560AF-D689-4321-BE49-FCEBFDACAFEB} = {6F261EC2-4DE5-4225-992D-9A2BDED239F2}
 		{2826AA27-7FC1-4F37-BDDF-D0F1C184B291} = {FE68950C-E85A-401E-9DF3-0BED787F3A59}
 		{A0C4C405-98C2-4BA2-ACF1-BA60027CE714} = {FE68950C-E85A-401E-9DF3-0BED787F3A59}
+		{A71F57A1-7D23-4CF7-9D45-57C956B475FF} = {CAB7F0D9-49E0-459F-9934-239D6EE8D2DA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BD63E6C5-6697-4965-8CDE-129707D7E719}

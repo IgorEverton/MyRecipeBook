@@ -1,10 +1,9 @@
 ﻿using MyRecipeBook.Communication.Request;
 using MyRecipeBook.Communication.Response;
 
-namespace MyRecipeBook.Application.UseCases.User.Register
+namespace MyRecipeBook.Application.UseCases.User.Register;
+
+public interface IRegisterUserUseCase
 {
-    public interface IRegisterUserUseCase
-    {
-        public Task<ResponseRegisterUserJson> Exercute(RequestRegisterUserJson request);
-    }
+    Task<ResponseRegisterUserJson> Exercute(RequestRegisterUserJson request);
 }

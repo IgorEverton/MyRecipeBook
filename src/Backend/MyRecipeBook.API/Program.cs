@@ -10,10 +10,12 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddInfrastructure(builder.Configuration);
+builder.Services.AddApplication();
+
 builder.Services.AddMvc(option => option.Filters.Add(typeof(ExceptionFilter)));
 
-builder.Services.AddInfrastructure();
-builder.Services.AddApplication();
+builder.Services.AddRouting(option => option.LowercaseUrls = true);
 
 var app = builder.Build();
 
