@@ -29,7 +29,7 @@ public class RegisterUserUseCase : IRegisterUserUseCase
         _passwordHasher = passwordHasher;
         _unitOfWork = unitOfWork;
     }
-    public async Task<ResponseRegisterUserJson> Exercute(RequestRegisterUserJson request)
+    public async Task<ResponseRegisterUserJson> Execute(RequestRegisterUserJson request)
     {
 
         ValidateAndThrowOnFailures(request);

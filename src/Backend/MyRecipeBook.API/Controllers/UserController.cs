@@ -14,7 +14,7 @@ namespace MyRecipeBook.API.Controllers
         [ProducesResponseType(typeof(ResponseErrorJson), StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> Register([FromBody]RequestRegisterUserJson request, [FromServices]IRegisterUserUseCase useCase)
         {
-            var result = await useCase.Exercute(request);
+            var result = await useCase.Execute(request);
 
             return Created(string.Empty, result);
         }
